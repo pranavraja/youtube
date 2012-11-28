@@ -3,7 +3,8 @@
     "version": "0.1.1",
     "dependencies": {
 	"request": "*",
-    "async": "*"
+    "async": "*",
+    "optimist": "*"
     },
     "devDependencies": {
 	"nodeunit": "*"

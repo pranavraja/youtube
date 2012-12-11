@@ -5,11 +5,13 @@ var argv = require('optimist').argv;
 
 var rl = readline.createInterface(process.stdin, process.stdout);
 rl.on('line', function (line) {
-    linkfinder.find(line, function (error, details) {
+    line = line.replace(/\s+$/,'');
+    detailsfunc = line.indexOf('http://') == 0 ? linkfinder.getLink : linkfinder.find;
+    detailsfunc(line, function (error, details) {
         if (argv.p) {
             // Preserve search as filename
-            details.title = line;
+            details.title = line + '.mp3';
         }
-        console.log(details.url + '\t' + details.title + '.mp3');
+        console.log(details.url + '\t' + details.title);
     });
 });

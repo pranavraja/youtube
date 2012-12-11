@@ -25,6 +25,8 @@ Accepts a query and returns links in the form `http://downloadurl/<TAB>filename.
 
 In the above example the script will output the download URL for the mp3, followed by a tab character, followed by the mp3 filename (taken from the title of the youtube video).
 
+Alternatively you can pass in a youtube URL instead of the search query.
+
 *Extra parameters*:
 
 * `-p`: Preserve original query as filename

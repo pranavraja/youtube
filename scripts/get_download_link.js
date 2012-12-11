@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 var linkfinder = require('../lib/linkfinder');
-var readline = require('readline');
 var argv = require('optimist').argv; 
+var stdin = require('stdin');
 
-var rl = readline.createInterface(process.stdin, process.stdout);
-rl.on('line', function (line) {
+stdin(function (line) {
     line = line.replace(/\s+$/,'');
     detailsfunc = line.indexOf('http://') == 0 ? linkfinder.getLink : linkfinder.find;
     detailsfunc(line, function (error, details) {
+        if (error) return;
         if (argv.p) {
             // Preserve search as filename
             details.title = line + '.mp3';
@@ -15,3 +15,4 @@ rl.on('line', function (line) {
         console.log(details.url + '\t' + details.title);
     });
 });
+

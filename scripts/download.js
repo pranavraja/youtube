@@ -3,6 +3,7 @@ var downloader = require('../lib/downloader');
 var linkfinder = require('../lib/linkfinder');
 var path = require('path');
 var argv = require('optimist').argv;
+var stdin = require('stdin');
 
 var WGET_PROGRESS = /(\d+%).+ (\w+s)/;
 
@@ -10,8 +11,7 @@ var writeProgress = function (match) {
 	process.stderr.write(match[1] + ' (' + match[2] + ' remaining)            \r'); 
 };
 
-process.stdin.resume();
-process.stdin.on('data', function (line) {
+stdin(function (line) {
     // line is of the format:
     // http://downloadurl.mp3<TAB>filename.mp3
     var fragments = line.toString().replace(/\n/g,'').split('\t');

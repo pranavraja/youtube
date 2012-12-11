@@ -4,7 +4,8 @@
     "dependencies": {
 	"request": "*",
     "async": "*",
-    "optimist": "*"
+    "optimist": "*",
+    "stdin": "*"
     },
     "devDependencies": {
 	"nodeunit": "*"

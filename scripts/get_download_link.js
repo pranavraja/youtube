@@ -7,7 +7,7 @@ stdin(function (input) {
     input.split('\n').forEach(function (line) {
         line = line.replace(/\s+$/,'');
         if (!line) return;
-        detailsfunc = line.indexOf('http://') == 0 ? linkfinder.getLink : linkfinder.find;
+        detailsfunc = line.search(/https?:\/\//) == 0 ? linkfinder.getLink : linkfinder.find;
         detailsfunc(line, function (error, details) {
             if (error) return;
             if (argv.p) {

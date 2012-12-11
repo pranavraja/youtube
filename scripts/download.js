@@ -15,7 +15,9 @@ stdin(function (input) {
     input.split('\n').forEach(function (line) {
         // line is of the format:
         // http://downloadurl.mp3<TAB>filename.mp3
-        var fragments = line.toString().replace(/\n/g,'').split('\t');
+        line = line.replace(/\s+$/,'');
+        if (!line) return;
+        var fragments = line.split('\t');
         var url = fragments[0];
         var output_file = path.join(argv.d || '.', fragments[1]);
         if (path.existsSync(output_file) && !argv.force) {
